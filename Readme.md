@@ -1,7 +1,7 @@
 Neo Geo
 =======
 
-This is a simple app you can use to find out if your browser supports the HTML5 geolocation API.
+This is a simple web page you can use to find out if your browser supports the HTML5 geolocation API.
 
 Heavily based on [code from Merge Design's blog](http://merged.ca/iphone/html5-geolocation).
 

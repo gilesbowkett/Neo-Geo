@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="jquery.js"></script>
+
+  <script>
+    function psuedo_log(string) {
+      console.log(string);
+      $("#geo").append(string);
+    }
+    $().ready(function() {
+      // http://merged.ca/iphone/html5-geolocation
+      if (navigator.geolocation) 
+      {
+        navigator.geolocation.getCurrentPosition( 
+
+          function (position) {  
+
+          // Did we get the position correctly?
+          psuedo_log("longitude " + position.coords.longitude + "<br/>");
+          psuedo_log("latitude " + position.coords.latitude + "<br/>");
+          psuedo_log("accuracy (confidence) " + position.coords.accuracy + "%<br/>");
+
+          // To see everything available in the position.coords array:
+          // psuedo_log(JSON.stringify(position).replace(/"/g, "\" "));
+
+          }, 
+          // next function is the error callback
+          function (error)
+          {
+            switch(error.code) 
+            {
+              case error.TIMEOUT:
+                psuedo_log('Timeout');
+                break;
+              case error.POSITION_UNAVAILABLE:
+                psuedo_log('Position unavailable');
+                break;
+              case error.PERMISSION_DENIED:
+                psuedo_log('Permission denied');
+                break;
+              case error.UNKNOWN_ERROR:
+                psuedo_log('Unknown error');
+                break;
+            }
+          }
+          );
+        }
+      });
+  </script>
+
+</head>
+<body>
+
+  <div style="font-size: 48px;" id="geo"></div>
+
+</body>
+</html>
